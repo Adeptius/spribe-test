@@ -1,0 +1,19 @@
+group 'ua.adeptius.spribe'
+version '1.0-RELEASE'
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+dependencies {
+    testCompile 'junit:junit:4.11'
+    compile 'org.apache.commons:commons-lang3:3.0'
+}
