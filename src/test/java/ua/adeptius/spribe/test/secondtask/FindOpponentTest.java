@@ -2,9 +2,9 @@ package ua.adeptius.spribe.test.secondtask;
 
 
 import org.junit.Test;
-import ua.adeptius.spribe.test.Exceptions.NoSuchAwaitingPlayer;
+import ua.adeptius.spribe.test.Exceptions.NoSuchAwaitingPlayerException;
 import ua.adeptius.spribe.test.Exceptions.PlayerAlreadyWaitingException;
-import ua.adeptius.spribe.test.Exceptions.ThereIsNoAwaitingPlayers;
+import ua.adeptius.spribe.test.Exceptions.ThereIsNoAwaitingPlayersException;
 
 import static org.junit.Assert.*;
 import static ua.adeptius.spribe.test.secondtask.FindOpponent.*;
@@ -32,12 +32,12 @@ public class FindOpponentTest {
         addAwaitingPlayer(new Player("Vasya", 1.35));
     }
 
-    @Test(expected = NoSuchAwaitingPlayer.class)
+    @Test(expected = NoSuchAwaitingPlayerException.class)
     public void removePlayerTest() throws Exception {
         removeAwaitingPlayer(new Player("Absent Guy", 5.2));
     }
 
-    @Test(expected = ThereIsNoAwaitingPlayers.class)
+    @Test(expected = ThereIsNoAwaitingPlayersException.class)
     public void noWaitingOpponentsTest() throws Exception {
         getOpponentForPlayer(new Player("First Player", 2.4));
     }

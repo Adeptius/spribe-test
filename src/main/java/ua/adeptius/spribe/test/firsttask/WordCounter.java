@@ -4,6 +4,7 @@ package ua.adeptius.spribe.test.firsttask;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 
 public class WordCounter {
 
@@ -11,7 +12,7 @@ public class WordCounter {
 
     public static synchronized void addNewWord(String word) {
         if (StringUtils.isEmpty(word))
-            throw new IllegalStateException("Word is empty or null!");
+            throw new IllegalArgumentException("Word is empty or null!");
 
         String lowerWord = word.toLowerCase();
 
@@ -24,6 +25,8 @@ public class WordCounter {
     }
 
     public static long getCountOfWord(String word) {
+        if (!countOfWords.containsKey(word.toLowerCase()))
+            throw new NoSuchElementException("There is no such word!");
         return countOfWords.get(word.toLowerCase());
     }
 }

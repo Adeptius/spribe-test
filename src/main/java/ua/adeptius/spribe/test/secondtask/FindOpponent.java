@@ -1,9 +1,9 @@
 package ua.adeptius.spribe.test.secondtask;
 
 
-import ua.adeptius.spribe.test.Exceptions.NoSuchAwaitingPlayer;
+import ua.adeptius.spribe.test.Exceptions.NoSuchAwaitingPlayerException;
 import ua.adeptius.spribe.test.Exceptions.PlayerAlreadyWaitingException;
-import ua.adeptius.spribe.test.Exceptions.ThereIsNoAwaitingPlayers;
+import ua.adeptius.spribe.test.Exceptions.ThereIsNoAwaitingPlayersException;
 
 import java.util.ArrayList;
 
@@ -20,14 +20,14 @@ public class FindOpponent {
 
     public static void removeAwaitingPlayer(Player player){
         if (!awaitingPlayers.contains(player))
-            throw new NoSuchAwaitingPlayer();
+            throw new NoSuchAwaitingPlayerException();
         awaitingPlayers.remove(player);
 
     }
 
     public static Player getOpponentForPlayer(Player player){
         if (awaitingPlayers.isEmpty())
-            throw new ThereIsNoAwaitingPlayers();
+            throw new ThereIsNoAwaitingPlayersException();
 
         Player opponent = awaitingPlayers.get(0);
         double difference = getDifferenceBetween(player, awaitingPlayers.get(0));
