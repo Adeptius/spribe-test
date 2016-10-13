@@ -11,7 +11,7 @@ public class WordCounter {
     private static HashMap<String, Long> countOfWords = new HashMap<>();
 
     public static synchronized void addNewWord(String word) throws IllegalArgumentException {
-        if (StringUtils.isEmpty(word))
+        if (word == null || word.equals(""))
             throw new IllegalArgumentException("Word is empty or null!");
 
         String lowerWord = word.toLowerCase();
