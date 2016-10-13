@@ -1,9 +1,9 @@
 package ua.adeptius.spribe.test.secondtask;
 
 
-import ua.adeptius.spribe.test.Exceptions.NoSuchAwaitingPlayerException;
-import ua.adeptius.spribe.test.Exceptions.PlayerAlreadyWaitingException;
-import ua.adeptius.spribe.test.Exceptions.NoAwaitingPlayersException;
+import ua.adeptius.spribe.test.exceptions.NoSuchAwaitingPlayerException;
+import ua.adeptius.spribe.test.exceptions.PlayerAlreadyWaitingException;
+import ua.adeptius.spribe.test.exceptions.NoAwaitingPlayersException;
 
 import java.util.ArrayList;
 

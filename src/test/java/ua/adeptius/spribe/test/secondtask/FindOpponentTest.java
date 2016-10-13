@@ -2,9 +2,9 @@ package ua.adeptius.spribe.test.secondtask;
 
 
 import org.junit.Test;
-import ua.adeptius.spribe.test.Exceptions.NoSuchAwaitingPlayerException;
-import ua.adeptius.spribe.test.Exceptions.PlayerAlreadyWaitingException;
-import ua.adeptius.spribe.test.Exceptions.NoAwaitingPlayersException;
+import ua.adeptius.spribe.test.exceptions.NoSuchAwaitingPlayerException;
+import ua.adeptius.spribe.test.exceptions.PlayerAlreadyWaitingException;
+import ua.adeptius.spribe.test.exceptions.NoAwaitingPlayersException;
 
 import static org.junit.Assert.*;
 import static ua.adeptius.spribe.test.secondtask.FindOpponent.*;

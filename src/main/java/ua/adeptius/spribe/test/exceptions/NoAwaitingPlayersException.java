@@ -1,4 +1,4 @@
-package ua.adeptius.spribe.test.Exceptions;
+package ua.adeptius.spribe.test.exceptions;
 
 
 public class NoAwaitingPlayersException extends Exception {
