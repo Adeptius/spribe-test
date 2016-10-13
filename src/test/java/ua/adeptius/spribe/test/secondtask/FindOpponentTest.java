@@ -4,7 +4,7 @@ package ua.adeptius.spribe.test.secondtask;
 import org.junit.Test;
 import ua.adeptius.spribe.test.Exceptions.NoSuchAwaitingPlayerException;
 import ua.adeptius.spribe.test.Exceptions.PlayerAlreadyWaitingException;
-import ua.adeptius.spribe.test.Exceptions.ThereIsNoAwaitingPlayersException;
+import ua.adeptius.spribe.test.Exceptions.NoAwaitingPlayersException;
 
 import static org.junit.Assert.*;
 import static ua.adeptius.spribe.test.secondtask.FindOpponent.*;
@@ -37,7 +37,7 @@ public class FindOpponentTest {
         removeAwaitingPlayer(new Player("Absent Guy", 5.2));
     }
 
-    @Test(expected = ThereIsNoAwaitingPlayersException.class)
+    @Test(expected = NoAwaitingPlayersException.class)
     public void noWaitingOpponentsTest() throws Exception {
         getOpponentForPlayer(new Player("First Player", 2.4));
     }

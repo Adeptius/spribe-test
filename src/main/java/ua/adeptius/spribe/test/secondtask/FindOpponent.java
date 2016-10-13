@@ -3,7 +3,7 @@ package ua.adeptius.spribe.test.secondtask;
 
 import ua.adeptius.spribe.test.Exceptions.NoSuchAwaitingPlayerException;
 import ua.adeptius.spribe.test.Exceptions.PlayerAlreadyWaitingException;
-import ua.adeptius.spribe.test.Exceptions.ThereIsNoAwaitingPlayersException;
+import ua.adeptius.spribe.test.Exceptions.NoAwaitingPlayersException;
 
 import java.util.ArrayList;
 
@@ -11,23 +11,24 @@ public class FindOpponent {
 
     private static ArrayList<Player> awaitingPlayers = new ArrayList<>();
 
-    public static void addAwaitingPlayer(Player player){
+    public static void addAwaitingPlayer(Player player) throws PlayerAlreadyWaitingException {
         if (awaitingPlayers.contains(player))
             throw new PlayerAlreadyWaitingException();
 
         awaitingPlayers.add(player);
     }
 
-    public static void removeAwaitingPlayer(Player player){
+    public static void removeAwaitingPlayer(Player player) throws NoSuchAwaitingPlayerException {
         if (!awaitingPlayers.contains(player))
             throw new NoSuchAwaitingPlayerException();
         awaitingPlayers.remove(player);
 
     }
 
-    public static Player getOpponentForPlayer(Player player){
+    public static Player getOpponentForPlayer(Player player)
+            throws NoAwaitingPlayersException, NoSuchAwaitingPlayerException {
         if (awaitingPlayers.isEmpty())
-            throw new ThereIsNoAwaitingPlayersException();
+            throw new NoAwaitingPlayersException();
 
         Player opponent = awaitingPlayers.get(0);
         double difference = getDifferenceBetween(player, awaitingPlayers.get(0));

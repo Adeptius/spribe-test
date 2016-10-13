@@ -10,7 +10,7 @@ public class WordCounter {
 
     private static HashMap<String, Long> countOfWords = new HashMap<>();
 
-    public static synchronized void addNewWord(String word) {
+    public static synchronized void addNewWord(String word) throws IllegalArgumentException {
         if (StringUtils.isEmpty(word))
             throw new IllegalArgumentException("Word is empty or null!");
 
@@ -24,7 +24,7 @@ public class WordCounter {
         }
     }
 
-    public static long getCountOfWord(String word) {
+    public static long getCountOfWord(String word) throws NoSuchElementException {
         if (!countOfWords.containsKey(word.toLowerCase()))
             throw new NoSuchElementException("There is no such word!");
         return countOfWords.get(word.toLowerCase());
