@@ -21,6 +21,7 @@ public class FindOpponent {
     public static void removeAwaitingPlayer(Player player) throws NoSuchAwaitingPlayerException {
         if (!awaitingPlayers.contains(player))
             throw new NoSuchAwaitingPlayerException();
+
         awaitingPlayers.remove(player);
 
     }

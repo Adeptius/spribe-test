@@ -1,7 +1,6 @@
 package ua.adeptius.spribe.test.firsttask;
 
 
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
 import java.util.NoSuchElementException;
@@ -27,6 +26,7 @@ public class WordCounter {
     public static long getCountOfWord(String word) throws NoSuchElementException {
         if (!countOfWords.containsKey(word.toLowerCase()))
             throw new NoSuchElementException("There is no such word!");
+
         return countOfWords.get(word.toLowerCase());
     }
 }
