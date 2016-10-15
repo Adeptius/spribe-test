@@ -23,13 +23,16 @@ public class FindOpponentTest {
         Player newPlayer = new Player("New Player", 2.4);
         Player foundedOpponentForNewPlayer = getOpponentForPlayer(newPlayer);
 
-        assertEquals(foundedOpponentForNewPlayer, petya);
+        assertNotNull("Opponent is null!", foundedOpponentForNewPlayer);
+        assertEquals("Opponent for 2.4 must be 2.0!", foundedOpponentForNewPlayer, petya);
     }
 
     @Test(expected = PlayerAlreadyWaitingException.class)
     public void addPlayerTest() throws Exception {
-        addAwaitingPlayer(new Player("Vasya", 1.35));
-        addAwaitingPlayer(new Player("Vasya", 1.35));
+        Player vasya = new Player("Vasya", 1.35);
+        addAwaitingPlayer(vasya);
+        //Here adding secont time.
+        addAwaitingPlayer(vasya);
     }
 
     @Test(expected = NoSuchAwaitingPlayerException.class)
