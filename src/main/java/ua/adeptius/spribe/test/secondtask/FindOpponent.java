@@ -23,7 +23,6 @@ public class FindOpponent {
             throw new NoSuchAwaitingPlayerException();
 
         awaitingPlayers.remove(player);
-
     }
 
     public static Player getOpponentForPlayer(Player player)
@@ -48,6 +47,10 @@ public class FindOpponent {
 
     private static double getDifferenceBetween(Player first, Player second){
         return Math.abs(first.getRating() - second.getRating());
+    }
+
+    public static int countOfWaitingPlayers(){
+        return awaitingPlayers.size();
     }
 
 }

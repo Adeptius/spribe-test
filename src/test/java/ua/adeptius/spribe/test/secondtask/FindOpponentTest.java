@@ -30,6 +30,8 @@ public class FindOpponentTest {
         assertNotNull("Opponent is null!", foundedOpponentForNewPlayer);
         assertEquals("Opponent for 2.6 must be 3.0!", foundedOpponentForNewPlayer, kolya);
 
+        assertEquals("Players are not deleting after searhing opponent!",
+                countOfWaitingPlayers(), 1);
     }
 
     @Test(expected = PlayerAlreadyWaitingException.class)
