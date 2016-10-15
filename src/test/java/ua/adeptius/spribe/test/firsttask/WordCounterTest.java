@@ -2,6 +2,7 @@ package ua.adeptius.spribe.test.firsttask;
 
 
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.NoSuchElementException;
@@ -10,24 +11,28 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import static ua.adeptius.spribe.test.firsttask.WordCounter.*;
-
-
 public class WordCounterTest {
+
+    private static WordCounter wordCounter;
+
+    @BeforeClass
+    public static void init(){
+        wordCounter = new WordCounter();
+    }
 
     @Test(expected=IllegalArgumentException.class)
     public void wordAddEmptyStringTest() throws Exception {
-        addNewWord("");
+        wordCounter.addNewWord("");
     }
 
     @Test(expected=IllegalArgumentException.class)
     public void wordAddNullStringTest() throws Exception {
-        addNewWord(null);
+        wordCounter.addNewWord(null);
     }
 
     @Test(expected = NoSuchElementException.class)
     public void getCountOfWordTest() throws Exception {
-        getCountOfWord("Absent word");
+        wordCounter.getCountOfWord("Absent word");
     }
 
     @Test
@@ -44,8 +49,8 @@ public class WordCounterTest {
         executor.shutdown();
         while (!executor.awaitTermination(1, TimeUnit.MILLISECONDS));
 
-        Assert.assertEquals(200000L, getCountOfWord("FirstWord"));
-        Assert.assertEquals(200000L, getCountOfWord("SecondWord"));
+        Assert.assertEquals(200000L, wordCounter.getCountOfWord("FirstWord"));
+        Assert.assertEquals(200000L, wordCounter.getCountOfWord("SecondWord"));
     }
 
     private class RunAnotherThread implements Runnable{
@@ -63,7 +68,7 @@ public class WordCounterTest {
             try {
                 latch.await();
                 for (int i = 1; i <= 100000; i++) {
-                    addNewWord(word);
+                    wordCounter.addNewWord(word);
                 }
             } catch (InterruptedException e) {
                 System.out.println("Latch was interrupted in " + Thread.currentThread());
