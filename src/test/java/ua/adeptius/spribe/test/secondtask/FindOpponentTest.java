@@ -22,9 +22,14 @@ public class FindOpponentTest {
 
         Player newPlayer = new Player("New Player", 2.4);
         Player foundedOpponentForNewPlayer = getOpponentForPlayer(newPlayer);
-
         assertNotNull("Opponent is null!", foundedOpponentForNewPlayer);
         assertEquals("Opponent for 2.4 must be 2.0!", foundedOpponentForNewPlayer, petya);
+
+        newPlayer.setRating(2.6);
+        foundedOpponentForNewPlayer = getOpponentForPlayer(newPlayer);
+        assertNotNull("Opponent is null!", foundedOpponentForNewPlayer);
+        assertEquals("Opponent for 2.6 must be 3.0!", foundedOpponentForNewPlayer, kolya);
+
     }
 
     @Test(expected = PlayerAlreadyWaitingException.class)
